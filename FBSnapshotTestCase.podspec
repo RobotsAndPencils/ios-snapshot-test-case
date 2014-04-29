@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name         = "FBSnapshotTestCase"
   s.version      = "1.1"
-  s.summary      = "Snapshot view unit tests for iOS"
+  s.summary      = "Snapshot view unit tests for iOS and Mac"
   s.description  = <<-DESC
-                    A "snapshot test case" takes a configured UIView or CALayer
+                    A "snapshot test case" takes a configured UIView/NSView or CALayer
                     and uses the renderInContext: method to get an image snapshot
                     of its contents. It compares this snapshot to a "reference image"
                     stored in your source code repository and fails the test if the
@@ -15,11 +15,13 @@ Pod::Spec.new do |s|
   s.author       = 'Facebook'
   s.source       = { :git => "https://github.com/facebook/ios-snapshot-test-case.git",
                      :tag => s.version.to_s }
-  s.platform     = :ios, '6.0'
+  s.ios.deployment_target = 6.0
+  s.osx.deployment_target = 10.8
   s.requires_arc = true
   s.framework    = 'XCTest'
 
-  s.source_files = 'FBSnapshotTestCase.{h,m}', 'FBSnapshotTestController.{h,m}', 'UIImage+*{h,m}'
+  s.ios.source_files = 'iOS'
+  s.osx.source_files = 'OSX'
 
   fb_def = 'FB_REFERENCE_IMAGE_DIR'
   fb_val = '"$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/ReferenceImages"'
