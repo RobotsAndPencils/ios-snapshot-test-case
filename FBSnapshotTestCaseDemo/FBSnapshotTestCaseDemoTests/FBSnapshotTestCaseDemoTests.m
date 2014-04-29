@@ -30,6 +30,12 @@
 {
   FBExampleView *v = [[FBExampleView alloc] initWithFrame:CGRectMake(0, 0, 64, 64)];
   FBSnapshotVerifyView(v, nil);
+  
+  CALayer *l = [[CALayer alloc] init];
+  l.frame = CGRectMake(0, 0, 64, 64);
+  l.backgroundColor = [UIColor redColor].CGColor;
+  
+  FBSnapshotVerifyLayer(l, nil);
 }
 
 @end

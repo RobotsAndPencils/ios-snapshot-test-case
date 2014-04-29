@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Facebook. All rights reserved.
 //
 
-#import "FBSnapshotTestCase.h"
+#import "FBSnapshotTestCaseMac.h"
 #import "FBMacExampleView.h"
 
 @interface FBSnapshotTestCaseMacDemoTests : FBSnapshotTestCase
@@ -28,6 +28,12 @@
 {
   FBMacExampleView *v = [[FBMacExampleView alloc] initWithFrame:CGRectMake(0, 0, 64, 64)];
   FBSnapshotVerifyView(v, nil);
+  
+  CALayer *l = [[CALayer alloc] init];
+  l.frame = CGRectMake(0, 0, 64, 64);
+  l.backgroundColor = [NSColor redColor].CGColor;
+  
+  FBSnapshotVerifyLayer(l, nil);
 }
 
 @end
